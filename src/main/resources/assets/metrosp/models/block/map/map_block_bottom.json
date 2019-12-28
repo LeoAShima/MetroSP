@@ -1,0 +1,8 @@
+ 
+{
+	"parent": "metrosp:block/map/map_bottom",
+	"textures": {
+		"particle":"metrosp:blocks/metal",
+		"metal": "metrosp:blocks/metal"
+	}
+}

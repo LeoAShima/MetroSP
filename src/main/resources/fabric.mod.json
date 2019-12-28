@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
+  "id": "metrosp",
+  "version": "0.1.0",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Metro SP",
+  "description": "Sao Paulo Metro Mod!",
   "authors": [
-    "Me!"
+    "LeoAShima"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -29,7 +29,7 @@
   "depends": {
     "fabricloader": ">=0.7.2",
     "fabric": "*",
-    "minecraft": "1.15.x"
+    "minecraft": "1.14.x"
   },
   "suggests": {
     "flamingo": "*"

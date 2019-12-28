@@ -1,0 +1,17 @@
+ 
+{
+	"variants": {
+		"facing=north,top=0": { "model": "metrosp:block/map/map_block_bottom" },
+		"facing=east,top=0":  { "model": "metrosp:block/map/map_block_bottom", "y": 90 },
+		"facing=south,top=0": { "model": "metrosp:block/map/map_block_bottom", "y": 180 },
+		"facing=west,top=0":  { "model": "metrosp:block/map/map_block_bottom", "y": 270 },
+		"facing=north,top=1": { "model": "metrosp:block/map/map_block_middle" },
+		"facing=east,top=1":  { "model": "metrosp:block/map/map_block_middle", "y": 90 },
+		"facing=south,top=1": { "model": "metrosp:block/map/map_block_middle", "y": 180 },
+		"facing=west,top=1":  { "model": "metrosp:block/map/map_block_middle", "y": 270 },
+		"facing=north,top=2": { "model": "metrosp:block/map/map_block_top" },
+		"facing=east,top=2":  { "model": "metrosp:block/map/map_block_top", "y": 90 },
+		"facing=south,top=2": { "model": "metrosp:block/map/map_block_top", "y": 180 },
+		"facing=west,top=2":  { "model": "metrosp:block/map/map_block_top", "y": 270 }
+	}
+}

@@ -1,0 +1,11 @@
+
+{
+	"parent": "metrosp:block/map/map_top",
+	"textures": {
+		"particle":"metrosp:blocks/metal",
+		"main":"metrosp:blocks/block_psd_side",
+		"metal": "metrosp:blocks/metal",
+		"map": "metrosp:map",
+		"light": "metrosp:blocks/light"
+	}
+}
