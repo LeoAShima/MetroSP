@@ -22,6 +22,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
 
 public class BlockMap extends Block {
@@ -64,6 +65,75 @@ public class BlockMap extends Block {
                 }
             } else 
             return VoxelShapes.cuboid(0.0F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
+    }
+
+    public boolean canBePlacedAt(World worldIn, BlockPos pos, BlockState state, LivingEntity placer) {
+        if (pos.getY() >= 254) return false;
+        Direction var9 = placer.getHorizontalFacing();
+		BlockPos pos2 = pos;
+		switch (var9) {
+		case NORTH:
+			pos2 = pos.add(1, 0, 0);
+			break;
+		case EAST:
+			pos2 = pos.add(0, 0, 1);
+			break;
+		case SOUTH:
+			pos2 = pos.add(-1, 0, 0);
+			break;
+		case WEST:
+			pos2 = pos.add(0, 0, -1);
+			break;
+		default:
+			break;
+        }
+
+        if (worldIn.getBlockState(pos2).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos2.up()).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos2.up(2)).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos.up()).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos.up(2)).getMaterial().isReplaceable()) {
+                    return true;
+                }
+        
+                return false;
+    }
+
+    public void place(World worldIn, BlockPos pos, BlockState state, LivingEntity placer) {
+		Direction var9 = placer.getHorizontalFacing();
+		BlockPos pos2 = pos;
+		switch (var9) {
+		case NORTH:
+			pos2 = pos.add(1, 0, 0);
+			break;
+		case EAST:
+			pos2 = pos.add(0, 0, 1);
+			break;
+		case SOUTH:
+			pos2 = pos.add(-1, 0, 0);
+			break;
+		case WEST:
+			pos2 = pos.add(0, 0, -1);
+			break;
+		default:
+			break;
+        }
+        
+		if (worldIn.getBlockState(pos2).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos2.up()).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos2.up(2)).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos.up()).getMaterial().isReplaceable()
+				&& worldIn.getBlockState(pos.up(2)).getMaterial().isReplaceable()) {
+			worldIn.setBlockState(pos2,
+					getDefaultState().with(FACING, var9.getOpposite()).with(TOP, 0));
+			worldIn.setBlockState(pos2.add(0, 1, 0),
+					getDefaultState().with(FACING, var9.getOpposite()).with(TOP, 1));
+			worldIn.setBlockState(pos2.add(0, 2, 0),
+					getDefaultState().with(FACING, var9.getOpposite()).with(TOP, 2));
+			worldIn.setBlockState(pos.add(0, 1, 0), getDefaultState().with(FACING, var9).with(TOP, 1));
+            worldIn.setBlockState(pos.add(0, 2, 0), getDefaultState().with(FACING, var9).with(TOP, 2));
+            worldIn.setBlockState(pos, getDefaultState().with(FACING, var9).with(TOP, 0));
+		}
     }
 
     @Override
@@ -127,42 +197,42 @@ public class BlockMap extends Block {
 		switch (state.get(TOP)) {
         case 0:
             if (worldIn.getBlockState(pos.add(0, 1, 0)).getBlock() instanceof BlockMap)
-                worldIn.breakBlock(pos.add(0, 1, 0), true);
+                worldIn.breakBlock(pos.add(0, 1, 0), false);
             if (worldIn.getBlockState(pos.add(0, 2, 0)).getBlock() instanceof BlockMap)
-                worldIn.breakBlock(pos.add(0, 2, 0), true);
+                worldIn.breakBlock(pos.add(0, 2, 0), false);
             if (worldIn.getBlockState(pos2).getBlock() instanceof BlockMap)
-                worldIn.breakBlock(pos2, true);
+                worldIn.breakBlock(pos2, false);
             if (worldIn.getBlockState(pos2.add(0, 1, 0)).getBlock() instanceof BlockMap)
-                worldIn.breakBlock(pos2.add(0, 1, 0), true);
+                worldIn.breakBlock(pos2.add(0, 1, 0), false);
             if (worldIn.getBlockState(pos2.add(0, 2, 0)).getBlock() instanceof BlockMap)
-                worldIn.breakBlock(pos2.add(0, 2, 0), true);
+                worldIn.breakBlock(pos2.add(0, 2, 0), false);
 			break;
 		case 1:
         if (worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos.add(0, -1, 0), true);
+            worldIn.breakBlock(pos.add(0, -1, 0), false);
         if (worldIn.getBlockState(pos.add(0, 1, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos.add(0, 1, 0), true);
+            worldIn.breakBlock(pos.add(0, 1, 0), false);
         if (worldIn.getBlockState(pos2).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos2, true);
+            worldIn.breakBlock(pos2, false);
         if (worldIn.getBlockState(pos2.add(0, -1, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos2.add(0, -1, 0), true);
+            worldIn.breakBlock(pos2.add(0, -1, 0), false);
         if (worldIn.getBlockState(pos2.add(0, 1, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos2.add(0, 1, 0), true);
+            worldIn.breakBlock(pos2.add(0, 1, 0), false);
 			break;
 		case 2:
         if (worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos.add(0, -1, 0), true);
+            worldIn.breakBlock(pos.add(0, -1, 0), false);
         if (worldIn.getBlockState(pos.add(0, -2, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos.add(0, -2, 0), true);
+            worldIn.breakBlock(pos.add(0, -2, 0), false);
         if (worldIn.getBlockState(pos2).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos2, true);
+            worldIn.breakBlock(pos2, false);
         if (worldIn.getBlockState(pos2.add(0, -1, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos2.add(0, -1, 0), true);
+            worldIn.breakBlock(pos2.add(0, -1, 0), false);
         if (worldIn.getBlockState(pos2.add(0, -2, 0)).getBlock() instanceof BlockMap)
-            worldIn.breakBlock(pos2.add(0, -2, 0), true);
+            worldIn.breakBlock(pos2.add(0, -2, 0), false);
 			break;
 		}
 		if (!(worldIn.getBlockState(pos2).getBlock() instanceof BlockMap) || b)
-			worldIn.breakBlock(pos, true);
+			worldIn.breakBlock(pos, false);
 	}
 }

@@ -19,10 +19,10 @@ public class ExampleMod implements ModInitializer {
 
 		System.out.println("Hello Fabric world!");
 		Registry.register(Registry.BLOCK, new Identifier("metrosp", "map_block"), MAP_BLOCK);
-		Registry.register(Registry.ITEM, new Identifier("metrosp", "map_block"), new BlockItem(MAP_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
+		Registry.register(Registry.ITEM, new Identifier("metrosp", "map_item"), MAP_ITEM);
 	}
 
 		// an instance of our new block
-		public static final Block MAP_BLOCK = new BlockMap(FabricBlockSettings.of(Material.METAL).build());
-
+		public static final BlockMap MAP_BLOCK = new BlockMap(FabricBlockSettings.of(Material.METAL).strength(5.0f, 5.0f).build());
+		public static final Item MAP_ITEM = new ItemMap(new Item.Settings().group(ItemGroup.MISC), MAP_BLOCK);
 }
