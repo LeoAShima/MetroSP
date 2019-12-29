@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package io.github.leoashima.metrosp;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

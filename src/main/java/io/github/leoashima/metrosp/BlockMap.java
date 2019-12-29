@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package io.github.leoashima.metrosp;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

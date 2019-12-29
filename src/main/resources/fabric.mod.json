@@ -9,8 +9,8 @@
     "LeoAShima"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://leoashima.github.io/",
+    "sources": "https://github.com/LeoAShima/metrosp"
   },
 
   "license": "CC0-1.0",
@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "io.github.leoashima.MetroSP"
     ]
   },
   "mixins": [
